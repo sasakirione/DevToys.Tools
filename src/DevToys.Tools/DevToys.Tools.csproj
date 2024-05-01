@@ -17,9 +17,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\**" />
     <None Include="$(RepoRoot)LICENSE.md" Link="LICENSE.md" Pack="true" PackagePath="\" />
+    <EmbeddedResource Update="Tools\Generators\Fake\FakeDataGenerator.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FakeDataGenerator.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Tools\Generators\Fake\FakeDataGenerator.ja-JP.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FakeDataGenerator.ja-JP.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" />
     <PackageReference Include="CronExpressionDescriptor" />
     <PackageReference Include="Cronos" />
     <PackageReference Include="DevToys.Api" />
@@ -31,6 +40,19 @@
     <PackageReference Include="YamlDotNet" />
     <PackageReference Include="ZXing.Net" />
     <PackageReference Include="ZXing.Net.Bindings.ImageSharp.V3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Tools\Generators\Fake\FakeDataGenerator.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FakeDataGenerator.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Tools\Generators\Fake\FakeDataGenerator.ja-JP.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FakeDataGenerator.ja-JP.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <Target Name="IncludeAllFilesInTargetDir" BeforeTargets="_GetPackageFiles">
